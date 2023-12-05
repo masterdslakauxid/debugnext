@@ -114,9 +114,9 @@
         
         <!-- <tr [ngClass]="entry.value.split(':')[0] == 'true'  ? 'red' : 'green'">          -->
           <tr> 
-          <td [ngClass]="entry.value.split(':')[0]=='true'? 'selected' : 'unselected'"> {{entry.key}}</td>
-          <td>{{entry.value.split(":")[0]}}</td>
-          <td>{{entry.value.split(":")[1]}}</td>
+          <td [ngClass]="entry.value.split(':')[0] != entry.value.split(':')[1]? 'selected' : 'unselected'"> {{entry.key}}</td>
+          <td [ngClass]="entry.value.split(':')[0] != entry.value.split(':')[1]? 'selected' : 'unselected'">{{entry.value.split(":")[0]}}</td>
+          <td [ngClass]="entry.value.split(':')[0] != entry.value.split(':')[1]? 'selected' : 'unselected'">{{entry.value.split(":")[1]}}</td>
         </tr>
       </ng-template>
     </p-table> 
