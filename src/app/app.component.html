@@ -1,0 +1,27 @@
+<p-tabView>
+   <!-- <p-tabPanel header="Debug Assist">
+      <p>
+        <app-debugassist></app-debugassist> 
+      </p>
+    </p-tabPanel> -->
+    <p-tabPanel header="Config Assist">
+      <p>
+        <app-configassist></app-configassist>
+      </p>
+    </p-tabPanel>
+    <p-tabPanel header="Customize">
+      <p>
+        Add something here.
+      </p>
+    </p-tabPanel>
+  </p-tabView>
+
+  <!-- <p-tabView>
+    <p-tabPanel [header]="item.header" 
+                   *ngFor="let item of items; let i = index" 
+                   [selected]="i == 0">
+           <ng-container *ngComponentOutlet="
+           getComponent.component;           
+         " />
+    </p-tabPanel>
+ </p-tabView> -->

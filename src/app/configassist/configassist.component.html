@@ -1,0 +1,132 @@
+<div class="container">
+  <p-dropdown [options]="services" [(ngModel)]="selectedCountry" optionLabel="name" [filter]="true" filterBy="name"
+    [showClear]="true" placeholder="Select a Service">
+    <ng-template pTemplate="selectedItem">
+      <div class="country-item country-item-value" *ngIf="selectedCountry">
+        <div>{{selectedCountry.name}}</div>
+      </div>
+    </ng-template>
+    <ng-template let-country pTemplate="item">
+      <div class="country-item">
+        <div>{{country.name}} {{country.resourceName}}</div>
+      </div>
+    </ng-template>
+  </p-dropdown>
+   &nbsp;
+  <p-button label="Submit" (click)="processSelectedResource()"></p-button>
+</div>
+
+<p-tabView>
+  <!-- <p-tabPanel header="Result view">    
+    <p>
+      <p-splitter [style]="{ height: '300px' }" [panelSizes]="[25,25,25,25]" styleClass="mb-5">
+        <ng-template pTemplate>
+          &nbsp;
+          <p-card header="Feature Keys" [style]="{ width: '500px',  height: '200px' }">
+            <p-table [value]="featureConfig" styleClass="p-datatable-sm">
+              <ng-template pTemplate="header">
+                <tr>
+                  <th>Key</th>
+                  <th>Value</th>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-entry>
+                <tr>
+                  <td>{{entry[0]}}</td>
+                  <td>{{entry[1]}}</td>
+                </tr>
+              </ng-template>
+            </p-table>
+          </p-card>
+        </ng-template>
+
+
+        <ng-template pTemplate>
+          <p-card header="UPoint Keys" [style]="{ width: '500px',  height: '200px' }">
+            <p-table [value]="upointConfig" styleClass="p-datatable-sm">
+              <ng-template pTemplate="header">
+                <tr>
+                  <th>Key</th>
+                  <th>Value</th>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-entry>
+                <tr>
+                  <td>{{entry[0]}}</td>
+                  <td>{{entry[1]}}</td>
+                </tr>
+              </ng-template>
+            </p-table>
+          </p-card>
+        </ng-template>
+
+
+        <ng-template pTemplate>
+          <p-card header="UCE Keys" [style]="{ width: '500px',  height: '200px' }">
+            <p-table [value]="uceConfig" styleClass="p-datatable-sm">
+              <ng-template pTemplate="header">
+                <tr>
+                  <th>Key</th>
+                  <th>Value</th>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-entry>
+                <tr>
+                  <td>{{entry[0]}}</td>
+                  <td>{{entry[1]}}</td>
+                </tr>
+              </ng-template>
+            </p-table>
+          </p-card>
+        </ng-template>
+      </p-splitter>
+      </p>
+  </p-tabPanel> -->
+  <!-- <p-tabPanel header="Raw view">
+    <p>
+      <textarea rows="25" cols="90" pInputTextarea [(ngModel)]="value" defaultValue = "text/json" #inputTarget></textarea>
+      <p-button [ngxClipboard]="inputTarget">Copy<i class="pi pi-copy"></i></p-button>
+    </p>
+  </p-tabPanel> -->
+  <p-tabPanel header="Compare Lifecycle resposes">
+    <p>
+      <p-checkbox name="groupname" value="val1" label="QA" [(ngModel)]="selectedValues1"></p-checkbox> &nbsp;
+      <p-checkbox name="groupname" value="val2" label="QC" [(ngModel)]="selectedValues2"></p-checkbox> &nbsp;
+      <p-checkbox name="groupname" value="val3" label="Prod" [(ngModel)]="selectedValues3"></p-checkbox> &nbsp;
+    </p>
+    <p>
+      <textarea rows="10" cols="90" pInputTextarea [(ngModel)]="value">Current Env</textarea>
+    </p>
+    <p>
+      <textarea rows="10" cols="90" pInputTextarea [(ngModel)]="value1"></textarea>
+    </p>
+    <p-button label="Compare" (click)="processDynamicInput()"></p-button>
+    <p>
+    <p-table [value]="compResult"   [style]="{width: '500px'}" styleClass="p-datatable-sm">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>{{headers[0]}}</th>
+          <th>{{headers[1].split(":")[0]}}</th>
+          <th>{{headers[1].split(":")[1]}}</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-entry>
+        
+        <!-- <tr [ngClass]="entry.value.split(':')[0] == 'true'  ? 'red' : 'green'">          -->
+          <tr> 
+          <td [ngClass]="entry.value.split(':')[0]=='true'? 'selected' : 'unselected'"> {{entry.key}}</td>
+          <td>{{entry.value.split(":")[0]}}</td>
+          <td>{{entry.value.split(":")[1]}}</td>
+        </tr>
+      </ng-template>
+    </p-table> 
+    </p> 
+  </p-tabPanel>
+  <!-- <p-tabPanel header="Download response">
+    <p>
+      <p-button [ngxClipboard]="inputTarget">Download<i class="pi pi-copy"></i></p-button>
+    </p>
+  </p-tabPanel> -->
+</p-tabView>
+
+  
